@@ -11,7 +11,10 @@
         @csrf
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" aria-describedby="title"  name="title" placeholder="Insert title">
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title"  name="title" placeholder="Insert title" value="{{old('title')}}">
+          @error('title')
+              <div class="alert alert-danger">{{$message}}</div>
+          @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
@@ -20,15 +23,21 @@
 
         <div class="mb-3">
           <label class="form-label" for="type">Select type:</label>
-          <select class="form-control" name="type" id="type">
+          <select class="form-control @error('type') is-invalid @enderror" name="type" id="type">
             <option value="lunga">Lunga</option>
             <option value="corta">Corta</option>
             <option value="cortissima">Cortissima</option>
           </select>
+          @error('type')
+          <div class="alert alert-danger">{{$message}}</div>
+         @enderror
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image Url</label>
-            <input type="text" class="form-control" id="image" aria-describedby="image"  name="image" placeholder="Insert image">
+            <input type="text" class="form-control @error('image') is-invalid @enderror" id="image" aria-describedby="image"  name="image" placeholder="Insert image">
+            @error('image')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="cooking_time" class="form-label">Cooking time in min.</label>

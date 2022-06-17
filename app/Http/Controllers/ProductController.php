@@ -7,6 +7,11 @@ use App\Product;
 
 class ProductController extends Controller
 {
+    protected $validationRule = [
+        'title' =>'required|max:50',
+        'type'=> 'required|max:20',
+        'image'=> 'required|max:255'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +41,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate($this->validationRule);
         $data = $request->all();
         // dump($data);
         $newProduct = new Product();
@@ -95,6 +100,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $request->validate($this->validationRule);
         $data = $request->all();
         //$product = Product::findOrFail($id);
         // $product->title = $data['title'];

@@ -14,7 +14,7 @@
           if (confirm("Sei sicuro di voler cancellare ?") == true) {
             el.submit();
           } else {
-            text.innerHTML = "You canceled!";
+            text.innerHTML = "Hai cancellato la tua azione";
           }
         }
     </script>
